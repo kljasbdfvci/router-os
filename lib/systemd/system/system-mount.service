@@ -1,0 +1,13 @@
+[Unit]
+Description=System-Mount
+DefaultDependencies=no
+Conflicts=shutdown.target
+After=local-fs.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=-/etc/system/mount.sh
+
+[Install]
+WantedBy=multi-user.target
