@@ -116,7 +116,7 @@ initialApplication() {
 decryptFile() {
    in=$1
    out=$2
-   serial $in $out
+   serial -d $in $out
    res_decrypt=$?
    my_print "decrypt file" $res_decrypt
    return $res_decrypt
