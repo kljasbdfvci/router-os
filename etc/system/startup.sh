@@ -116,7 +116,7 @@ initialApplication() {
 decryptFile() {
    in=$1
    out=$2
-   serial -s code | openssl enc -aes-256-cbc -d -in $in -out $out -pass stdin
+   serial $in $out
    res_decrypt=$?
    my_print "decrypt file" $res_decrypt
    return $res_decrypt
@@ -144,8 +144,8 @@ do
 done
 
 ### System
-os_file_path=$(find /disk/firmware -type f -name 'linux-os*' | sort | tail -n 1)
-app_file_path=$(find /disk/firmware -type f -name 'app*' | sort | tail -n 1)
+os_file_path=$(find /disk/firmware -type f -name '*-os*' | sort | tail -n 1)
+app_file_path=$(find /disk/firmware -type f -name '*-app*' | sort | tail -n 1)
 app_untar_path="/memory/app"
 app_init_path="/memory/app/bin/init.sh"
 
